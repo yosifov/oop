@@ -6,7 +6,7 @@
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("CSharp OOP");
+            Abstraction.RhombusOfStars.Rhombus.Execute();
         }
     }
 }
