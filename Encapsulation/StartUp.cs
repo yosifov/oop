@@ -45,5 +45,24 @@
             persons.ForEach(p => p.IncreaseSalary(parcentage));
             persons.ForEach(p => Console.WriteLine(p.ToString()));
         }
+
+        public static void ExecuteFirstAndReserveTeam()
+        {
+            var team = new Team("My Team");
+
+            int numberOfPlayers = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < numberOfPlayers; i++)
+            {
+                var currentPlayer = Console.ReadLine().Split();
+                string playerFirstName = currentPlayer[0];
+                string playerLastName = currentPlayer[1];
+                int playerAge = int.Parse(currentPlayer[2]);
+
+                team.AddPlayer(new Person(playerFirstName, playerLastName, playerAge));
+            }
+
+            Console.WriteLine(team);
+        }
     }
 }

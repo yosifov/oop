@@ -6,7 +6,8 @@
         {
             // Abstraction.RhombusOfStars.Rhombus.Execute();
             // Encapsulation.StartUp.ExecuteSortPersonsByNameAndAge();
-            Encapsulation.StartUp.ExecuteSalaryIncrease();
+            // Encapsulation.StartUp.ExecuteSalaryIncrease();
+            Encapsulation.StartUp.ExecuteFirstAndReserveTeam();
         }
     }
 }

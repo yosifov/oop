@@ -21,7 +21,7 @@
         }
 
         public Person(string firstName, string lastName, int age)
-            : this(firstName, lastName, age, 0)
+            : this(firstName, lastName, age, 460)
         {
         }
 
