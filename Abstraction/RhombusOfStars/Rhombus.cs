@@ -17,6 +17,7 @@
             {
                 PrintRhombusRow(i, count);
             }
+
             for (int i = count - 1; i > 0; i--)
             {
                 PrintRhombusRow(i, count);
