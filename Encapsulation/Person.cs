@@ -1,7 +1,17 @@
 ﻿namespace OOP.Encapsulation
 {
+    using System;
+
     public class Person
     {
+        private string firstName;
+
+        private string lastName;
+
+        private int age;
+
+        private decimal salary;
+
         public Person(string firstName, string lastName, int age, decimal salary)
         {
             this.FirstName = firstName;
@@ -15,13 +25,61 @@
         {
         }
 
-        public string FirstName { get; private set; }
+        public string FirstName
+        {
+            get
+            {
+                return this.firstName;
+            }
 
-        public string LastName { get; private set; }
+            private set
+            {
+                this.ValidateFirstName(value);
+                this.firstName = value;
+            }
+        }
 
-        public int Age { get; private set; }
+        public string LastName
+        {
+            get
+            {
+                return this.lastName;
+            }
 
-        public decimal Salary { get; private set; }
+            private set
+            {
+                this.ValidateLastName(value);
+                this.lastName = value;
+            }
+        }
+
+        public int Age
+        {
+            get
+            {
+                return this.age;
+            }
+
+            private set
+            {
+                this.ValidateAge(value);
+                this.age = value;
+            }
+        }
+
+        public decimal Salary
+        {
+            get
+            {
+                return this.salary;
+            }
+
+            private set
+            {
+                this.ValidateSalary(value);
+                this.salary = value;
+            }
+        }
 
         public void IncreaseSalary(decimal percentage)
         {
@@ -36,6 +94,38 @@
         public override string ToString()
         {
             return $"{this.FirstName} {this.LastName} receives {this.Salary:F2} leva.";
+        }
+
+        private void ValidateSalary(decimal salary)
+        {
+            if (salary < 460)
+            {
+                throw new ArgumentException("Salary cannot be less than 460 leva!");
+            }
+        }
+
+        private void ValidateAge(int age)
+        {
+            if (age <= 0)
+            {
+                throw new ArgumentException("Age cannot be zero or a negative integer!");
+            }
+        }
+
+        private void ValidateFirstName(string firstName)
+        {
+            if (firstName.Length < 3)
+            {
+                throw new ArgumentException($"{nameof(this.FirstName)} cannot contain fewer than 3 symbols!");
+            }
+        }
+
+        private void ValidateLastName(string lastName)
+        {
+            if (lastName.Length < 3)
+            {
+                throw new ArgumentException($"{nameof(this.LastName)} cannot contain fewer than 3 symbols!");
+            }
         }
     }
 }
