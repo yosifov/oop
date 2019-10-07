@@ -5,7 +5,8 @@
         public static void Main(string[] args)
         {
             // Abstraction.RhombusOfStars.Rhombus.Execute();
-            Encapsulation.StartUp.ExecuteSortPersonsByNameAndAge();
+            // Encapsulation.StartUp.ExecuteSortPersonsByNameAndAge();
+            Encapsulation.StartUp.ExecuteSalaryIncrease();
         }
     }
 }
