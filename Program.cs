@@ -7,7 +7,8 @@
             // Abstraction.RhombusOfStars.Rhombus.Execute();
             // Encapsulation.StartUp.ExecuteSortPersonsByNameAndAge();
             // Encapsulation.StartUp.ExecuteSalaryIncrease();
-            Encapsulation.StartUp.ExecuteFirstAndReserveTeam();
+            // Encapsulation.StartUp.ExecuteFirstAndReserveTeam();
+            Encapsulation.ClassBox.Startup.Execute();
         }
     }
 }
