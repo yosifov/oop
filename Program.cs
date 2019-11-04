@@ -8,7 +8,8 @@
             // Encapsulation.StartUp.ExecuteSortPersonsByNameAndAge();
             // Encapsulation.StartUp.ExecuteSalaryIncrease();
             // Encapsulation.StartUp.ExecuteFirstAndReserveTeam();
-            Encapsulation.ClassBox.Startup.Execute();
+            // Encapsulation.ClassBox.Startup.Execute();
+            Encapsulation.AnimalFarm.Startup.Execute();
         }
     }
 }
