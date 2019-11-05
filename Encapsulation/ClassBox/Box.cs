@@ -21,7 +21,7 @@
             get => this.length;
             private set
             {
-                ValidateSide(value);
+                this.ValidateSide(value, nameof(this.Length));
 
                 this.length = value;
             }
@@ -32,7 +32,7 @@
             get => this.width;
             private set 
             {
-                ValidateSide(value);
+                this.ValidateSide(value, nameof(this.Width));
 
                 this.width = value;
             }
@@ -43,7 +43,7 @@
             get => this.height; 
             set
             {
-                ValidateSide(value);
+                this.ValidateSide(value, nameof(this.Height));
 
                 this.height = value;
             }
@@ -51,17 +51,14 @@
 
         public double GetSurfaceArea()
         {
-            double surfaceArea = (2 * this.length * this.width) 
-                + (2 * this.length * this.height) 
-                + (2 * this.width * this.height);
+            double surfaceArea = 2 * (this.length + this.GetLateralSurfaceArea());
             
             return surfaceArea;
         }
 
         public double GetLateralSurfaceArea()
         {
-            double lateralSurfaceArea = (2 * this.length * this.height) 
-                + (2 * this.width * this.height);
+            double lateralSurfaceArea = 2 * ((this.length * this.height) + (this.width * this.height));
 
             return lateralSurfaceArea;
         }
@@ -82,11 +79,11 @@
             return sb.ToString();
         }
 
-        private static void ValidateSide(double value)
+        private void ValidateSide(double value, string parameterName)
         {
             if (value <= 0)
             {
-                throw new ArgumentException("Box side cannot be zero or negative.");
+                throw new ArgumentException($"{parameterName} cannot be zero or negative.");
             }
         }
     }

@@ -10,9 +10,15 @@
             double width = double.Parse(Console.ReadLine());
             double height = double.Parse(Console.ReadLine());
 
-            var box = new Box(length, width, height);
-
-            Console.WriteLine(box);
+            try
+            {
+                var box = new Box(length, width, height);
+                Console.WriteLine(box);
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }
