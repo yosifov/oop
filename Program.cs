@@ -9,7 +9,8 @@
             // Encapsulation.StartUp.ExecuteSalaryIncrease();
             // Encapsulation.StartUp.ExecuteFirstAndReserveTeam();
             // Encapsulation.ClassBox.Startup.Execute();
-            Encapsulation.AnimalFarm.Startup.Execute();
+            // Encapsulation.AnimalFarm.Startup.Execute();
+            Encapsulation.ShoppingSpree.Startup.Execute();
         }
     }
 }
