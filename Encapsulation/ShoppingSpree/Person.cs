@@ -45,7 +45,7 @@
             } 
         }
 
-        public void Buy(Product product)
+        public void AddToBag(Product product)
         {
             if (this.money - product.Cost < 0)
             {
