@@ -21,7 +21,15 @@
                 {
                     string name = parameters[0];
                     decimal money = decimal.Parse(parameters[1]);
-                    people.Add(new Person(name, money));
+                    try
+                    {
+                        people.Add(new Person(name, money));
+                    }
+                    catch (ArgumentException e)
+                    {
+                        Console.WriteLine(e.Message);
+                        throw;
+                    }
                 }
             }
 
@@ -32,7 +40,15 @@
                 {
                     string name = parameters[0];
                     decimal cost = decimal.Parse(parameters[1]);
-                    products.Add(new Product(name, cost));
+                    try
+                    {
+                        products.Add(new Product(name, cost));
+                    }
+                    catch (ArgumentException e)
+                    {
+                        Console.WriteLine(e.Message);
+                        throw;
+                    }
                 }
             }
 

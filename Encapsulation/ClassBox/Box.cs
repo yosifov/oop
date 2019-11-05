@@ -51,17 +51,14 @@
 
         public double GetSurfaceArea()
         {
-            double surfaceArea = (2 * this.length * this.width) 
-                + (2 * this.length * this.height) 
-                + (2 * this.width * this.height);
+            double surfaceArea = 2 * this.length + this.GetLateralSurfaceArea();
             
             return surfaceArea;
         }
 
         public double GetLateralSurfaceArea()
         {
-            double lateralSurfaceArea = (2 * this.length * this.height) 
-                + (2 * this.width * this.height);
+            double lateralSurfaceArea = 2 * (this.length * this.height + this.width * this.height);
 
             return lateralSurfaceArea;
         }
