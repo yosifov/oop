@@ -10,7 +10,8 @@
             // Encapsulation.StartUp.ExecuteFirstAndReserveTeam();
             // Encapsulation.ClassBox.Startup.Execute();
             // Encapsulation.AnimalFarm.Startup.Execute();
-            Encapsulation.ShoppingSpree.Startup.Execute();
+            // Encapsulation.ShoppingSpree.Startup.Execute();
+            Encapsulation.PizzaCalories.Startup.Execute();
         }
     }
 }
