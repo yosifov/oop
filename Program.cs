@@ -12,7 +12,8 @@
             // Encapsulation.AnimalFarm.Startup.Execute();
             // Encapsulation.ShoppingSpree.Startup.Execute();
             // Encapsulation.PizzaCalories.Startup.Execute();
-            Inheritance.Lab.Startup.Execute();
+            // Inheritance.Lab.Startup.Execute();
+            Inheritance.RandomList.Startup.Execute();
         }
     }
 }
