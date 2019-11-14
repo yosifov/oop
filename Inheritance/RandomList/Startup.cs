@@ -12,7 +12,7 @@
             randomList.Add("Second");
             randomList.Add("Third");
 
-            randomList.RandomString();
+            Console.WriteLine(randomList.RandomString());
 
             Console.WriteLine(string.Join(", ", randomList));
         }
