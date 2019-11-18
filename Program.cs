@@ -14,7 +14,8 @@
             // Encapsulation.PizzaCalories.Startup.Execute();
             // Inheritance.Lab.Startup.Execute();
             // Inheritance.RandomList.Startup.Execute();
-            Inheritance.StackOfStrings.Startup.Execute();
+            // Inheritance.StackOfStrings.Startup.Execute();
+            Inheritance.Person.Startup.Execute();
         }
     }
 }
