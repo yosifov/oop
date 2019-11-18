@@ -16,7 +16,8 @@
             // Inheritance.RandomList.Startup.Execute();
             // Inheritance.StackOfStrings.Startup.Execute();
             // Inheritance.Person.Startup.Execute();
-            Inheritance.BookShop.Startup.Execute();
+            // Inheritance.BookShop.Startup.Execute();
+            Inheritance.Mankind.Startup.Execute();
         }
     }
 }
