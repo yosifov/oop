@@ -17,7 +17,8 @@
             // Inheritance.StackOfStrings.Startup.Execute();
             // Inheritance.Person.Startup.Execute();
             // Inheritance.BookShop.Startup.Execute();
-            Inheritance.Mankind.Startup.Execute();
+            // Inheritance.Mankind.Startup.Execute();
+            Inheritance.OnlineRadioDatabase.Startup.Execute();
         }
     }
 }
