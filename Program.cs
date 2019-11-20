@@ -18,7 +18,8 @@
             // Inheritance.Person.Startup.Execute();
             // Inheritance.BookShop.Startup.Execute();
             // Inheritance.Mankind.Startup.Execute();
-            Inheritance.OnlineRadioDatabase.Startup.Execute();
+            // Inheritance.OnlineRadioDatabase.Startup.Execute();
+            Inheritance.MordorsCruelPlan.Startup.Execute();
         }
     }
 }
