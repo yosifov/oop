@@ -8,9 +8,8 @@
         private int battery;
 
         public Tesla(string model, string color, int battery)
+            : base(model, color)
         {
-            this.Model = model;
-            this.Color = color;
             this.Battery = battery;
         }
 
