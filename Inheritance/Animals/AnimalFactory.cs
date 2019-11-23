@@ -1,7 +1,7 @@
 ﻿namespace OOP.Inheritance.Animals
 {
-    using OOP.Inheritance.Animals.Animals;
     using System;
+    using OOP.Inheritance.Animals.Animals;
 
     public static class AnimalFactory
     {

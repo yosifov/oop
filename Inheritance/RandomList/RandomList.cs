@@ -11,6 +11,7 @@
         {
             this.random = new Random();
         }
+
         public string RandomString()
         {
             int randomIndex = this.random.Next(0, this.Count);

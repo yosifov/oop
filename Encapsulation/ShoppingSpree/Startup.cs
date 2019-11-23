@@ -15,7 +15,6 @@
             shoppers.AddMany(peopleParameters);
             products.AddMany(productsParameters);
             
-
             var input = Console.ReadLine();
 
             while (input != "END")

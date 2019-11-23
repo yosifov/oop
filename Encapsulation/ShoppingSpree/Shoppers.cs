@@ -1,5 +1,4 @@
-﻿
-namespace OOP.Encapsulation.ShoppingSpree
+﻿namespace OOP.Encapsulation.ShoppingSpree
 {
     using System;
     using System.Collections.Generic;

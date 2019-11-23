@@ -20,7 +20,8 @@
             // Inheritance.Mankind.Startup.Execute();
             // Inheritance.OnlineRadioDatabase.Startup.Execute();
             // Inheritance.MordorsCruelPlan.Startup.Execute();
-            Inheritance.Animals.Startup.Execute();
+            // Inheritance.Animals.Startup.Execute();
+            Interfaces.Shapes.Startup.Execute();
         }
     }
 }

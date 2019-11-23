@@ -27,7 +27,7 @@
 
         public string Name
         {
-            get => name;
+            get => this.name;
             protected set
             {
                 if (value.Length < 3)
