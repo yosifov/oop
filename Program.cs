@@ -21,7 +21,8 @@
             // Inheritance.OnlineRadioDatabase.Startup.Execute();
             // Inheritance.MordorsCruelPlan.Startup.Execute();
             // Inheritance.Animals.Startup.Execute();
-            Interfaces.Shapes.Startup.Execute();
+            // Interfaces.Shapes.Startup.Execute();
+            Interfaces.Cars.Startup.Execute();
         }
     }
 }
