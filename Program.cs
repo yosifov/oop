@@ -19,7 +19,8 @@
             // Inheritance.BookShop.Startup.Execute();
             // Inheritance.Mankind.Startup.Execute();
             // Inheritance.OnlineRadioDatabase.Startup.Execute();
-            Inheritance.MordorsCruelPlan.Startup.Execute();
+            // Inheritance.MordorsCruelPlan.Startup.Execute();
+            Inheritance.Animals.Startup.Execute();
         }
     }
 }
