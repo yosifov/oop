@@ -23,7 +23,8 @@
             // Inheritance.Animals.Startup.Execute();
             // Interfaces.Shapes.Startup.Execute();
             // Interfaces.Cars.Startup.Execute();
-            Interfaces.IPerson.Startup.Execute();
+            // Interfaces.IPerson.Startup.Execute();
+            // Interfaces.Ferrari.Startup.Execute();
         }
     }
 }
