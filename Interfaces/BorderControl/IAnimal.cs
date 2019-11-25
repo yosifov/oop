@@ -1,12 +1,8 @@
 ﻿namespace OOP.Interfaces.BorderControl
 {
-    public interface IPerson
+    public interface IAnimal
     {
         public string Name { get; }
-
-        public int Age { get; }
-
-        public string Id { get; }
 
         public string Birthdate { get; }
     }
