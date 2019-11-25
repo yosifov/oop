@@ -51,5 +51,56 @@
             var matchBirthYear = Console.ReadLine();
             Console.WriteLine(borderControl.GetBirthdatesByYear(matchBirthYear));
         }
+
+        public static void ExecuteFoodShortage()
+        {
+            var borderControl = new BorderControl();
+
+            var personsNum = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < personsNum; i++)
+            {
+                var input = Console.ReadLine();
+
+                try
+                {
+                    var inputArgs = input.Split();
+
+                    switch (inputArgs.Length)
+                    {
+                        case 4:
+                            var citizenName = inputArgs[0];
+                            var age = int.Parse(inputArgs[1]);
+                            var citizenId = inputArgs[2];
+                            var citizenBirthdate = inputArgs[3];
+                            borderControl.AddCitizen(citizenName, age, citizenId, citizenBirthdate);
+                            break;
+                        case 3:
+                            var rebelName = inputArgs[0];
+                            var rebelAge = int.Parse(inputArgs[1]);
+                            var rebelGroup = inputArgs[2];
+                            borderControl.AddRebel(rebelName, rebelAge, rebelGroup);
+                            break;
+                        default:
+                            throw new ArgumentException("Invalid input!");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            var currentPersonName = Console.ReadLine();
+
+            while (currentPersonName != "End")
+            {
+                borderControl.BuyFrom(currentPersonName);
+
+                currentPersonName = Console.ReadLine();
+            }
+
+            Console.WriteLine(borderControl.GetTotalFoodPurchased());
+        }
     }
 }

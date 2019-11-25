@@ -26,7 +26,8 @@
             // Interfaces.IPerson.Startup.Execute();
             // Interfaces.Ferrari.Startup.Execute();
             // Interfaces.Telephony.Startup.Execute();
-            Interfaces.BorderControl.Startup.Execute();
+            // Interfaces.BorderControl.Startup.Execute();
+            Interfaces.BorderControl.Startup.ExecuteFoodShortage();
         }
     }
 }

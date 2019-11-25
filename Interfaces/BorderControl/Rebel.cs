@@ -2,26 +2,21 @@
 {
     using System;
 
-    public class Citizen : IPerson, IBuyer
+    public class Rebel : IPerson, IBuyer
     {
         private string name;
         private int age;
-        private string id;
-        private string birthdate;
+        private string group;
         private int food;
 
-        public Citizen(string name, int age, string id, string birthdate)
+        public Rebel(string name, int age, string group)
         {
             this.Name = name;
             this.Age = age;
-            this.Id = id;
-            this.Birthdate = birthdate;
+            this.Id = "0000";
+            this.Birthdate = "01/01/1970";
+            this.Group = group;
             this.Food = 0;
-        }
-
-        public Citizen(string name, int age, string id)
-            : this(name, age, id, "01/01/1970")
-        {
         }
 
         public string Name
@@ -48,25 +43,17 @@
             }
         }
 
-        public string Id
-        {
-            get => this.id;
-            private set
-            {
-                Validator.ValidateNotNull(value, nameof(this.Id));
-                Validator.ValidateOnlyDigits(value, nameof(this.id));
-                this.id = value;
-            }
-        }
+        public string Id { get; }
 
-        public string Birthdate
+        public string Birthdate { get; }
+
+        public string Group
         {
-            get => this.birthdate;
+            get => this.group;
             private set
             {
-                Validator.ValidateNotNull(value, nameof(this.Birthdate));
-                Validator.ValidateBirthdate(value);
-                this.birthdate = value;
+                Validator.ValidateNotNull(value, nameof(this.Group));
+                this.group = value;
             }
         }
 
@@ -86,7 +73,7 @@
 
         public void BuyFood()
         {
-            this.Food += 10;
+            this.Food += 5;
         }
     }
 }
