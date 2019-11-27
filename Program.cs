@@ -27,7 +27,8 @@
             // Interfaces.Ferrari.Startup.Execute();
             // Interfaces.Telephony.Startup.Execute();
             // Interfaces.BorderControl.Startup.Execute();
-            Interfaces.BorderControl.Startup.ExecuteFoodShortage();
+            // Interfaces.BorderControl.Startup.ExecuteFoodShortage();
+            Interfaces.MilitaryElite.Startup.Execute();
         }
     }
 }
