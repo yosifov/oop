@@ -33,7 +33,7 @@
             var sb = new StringBuilder();
             sb.AppendLine(base.ToString());
             sb.AppendLine("Missions:");
-            this.missions.Where(x => x.State == "inProgress").ToList().ForEach(x => sb.AppendLine($"  {x.ToString()}"));
+            this.missions.ForEach(x => sb.AppendLine($"  {x.ToString()}"));
             return sb.ToString().TrimEnd();
         }
     }

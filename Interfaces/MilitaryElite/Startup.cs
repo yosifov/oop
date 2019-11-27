@@ -13,54 +13,80 @@
 
             while (input != "End")
             {
-                try
+                string[] soldierArgs = input.Split();
+
+                string soldierType = soldierArgs[0];
+                int soldierId = int.Parse(soldierArgs[1]);
+                string soldierFirstName = soldierArgs[2];
+                string soldierLastName = soldierArgs[3];
+
+                switch (soldierType)
                 {
-                    string[] soldierArgs = input.Split();
+                    case "Private":
+                        decimal privateSalary = decimal.Parse(soldierArgs[4]);
 
-                    string soldierType = soldierArgs[0];
-                    int soldierId = int.Parse(soldierArgs[1]);
-                    string soldierFirstName = soldierArgs[2];
-                    string soldierLastName = soldierArgs[3];
+                        militaryElite.AddPrivate(soldierId,
+                            soldierFirstName,
+                            soldierLastName,
+                            privateSalary);
+                        break;
+                    case "Spy":
+                        int spyCodeNumber = int.Parse(soldierArgs[4]);
 
-                    switch (soldierType)
-                    {
-                        case "Private":
-                            decimal privateSalary = decimal.Parse(soldierArgs[4]);
+                        militaryElite.AddSpy(soldierId,
+                            soldierFirstName,
+                            soldierLastName,
+                            spyCodeNumber);
+                        break;
+                    case "LieutenantGeneral":
+                        decimal lieutenantSalary = decimal.Parse(soldierArgs[4]);
+                        int[] privates = soldierArgs.Skip(5).Select(int.Parse).ToArray();
 
-                            militaryElite.AddPrivate(soldierId, soldierFirstName, soldierLastName, privateSalary);
-                            break;
-                        case "Spy":
-                            int spyCodeNumber = int.Parse(soldierArgs[4]);
+                        militaryElite.AddLieutenantGeneral(soldierId,
+                            soldierFirstName,
+                            soldierLastName,
+                            lieutenantSalary,
+                            privates);
+                        break;
+                    case "Engineer":
+                        decimal engineerSalary = decimal.Parse(soldierArgs[4]);
+                        string engineerCorps = soldierArgs[5];
+                        string[] repairs = soldierArgs.Skip(6).ToArray();
 
-                            militaryElite.AddSpy(soldierId, soldierFirstName, soldierLastName, spyCodeNumber);
-                            break;
-                        case "LieutenantGeneral":
-                            decimal lieutenantSalary = decimal.Parse(soldierArgs[4]);
-                            int[] privates = soldierArgs.Skip(5).Select(int.Parse).ToArray();
+                        try
+                        {
+                            militaryElite.AddEnginees(soldierId,
+                                soldierFirstName,
+                                soldierLastName,
+                                engineerSalary,
+                                engineerCorps,
+                                repairs);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                        }
+                        break;
+                    case "Commando":
+                        decimal commandoSalary = decimal.Parse(soldierArgs[4]);
+                        string commandoCorps = soldierArgs[5];
+                        string[] missions = soldierArgs.Skip(6).ToArray();
 
-                            militaryElite.AddLieutenantGeneral(soldierId, soldierFirstName, soldierLastName, lieutenantSalary, privates);
-                            break;
-                        case "Engineer":
-                            decimal engineerSalary = decimal.Parse(soldierArgs[4]);
-                            string engineerCorps = soldierArgs[5];
-                            string[] repairs = soldierArgs.Skip(6).ToArray();
-
-                            militaryElite.AddEnginees(soldierId, soldierFirstName, soldierLastName, engineerSalary, engineerCorps, repairs);
-                            break;
-                        case "Commando":
-                            decimal commandoSalary = decimal.Parse(soldierArgs[4]);
-                            string commandoCorps = soldierArgs[5];
-                            string[] missions = soldierArgs.Skip(6).ToArray();
-
-                            militaryElite.AddCommando(soldierId, soldierFirstName, soldierLastName, commandoSalary, commandoCorps, missions);
-                            break;
-                        default:
-                            throw new ArgumentException("Invalid soldier type");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
+                        try
+                        {
+                            militaryElite.AddCommando(soldierId,
+                                soldierFirstName,
+                                soldierLastName,
+                                commandoSalary,
+                                commandoCorps,
+                                missions);
+                        }
+                        catch (Exception ex)
+                        {
+                        }
+                        break;
+                    default:
+                        break;
                 }
 
                 input = Console.ReadLine();

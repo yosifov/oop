@@ -19,7 +19,7 @@
             get => this.corps; 
             private set
             {
-                if (value.ToLower() != "marines" && value.ToLower() != "airforces")
+                if (value != "Marines" && value != "Airforces")
                 {
                     throw new ArgumentException("Invalid corps");
                 }

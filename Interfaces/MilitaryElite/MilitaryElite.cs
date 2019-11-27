@@ -1,5 +1,6 @@
 ﻿namespace OOP.Interfaces.MilitaryElite
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
@@ -70,10 +71,16 @@
             {
                 for (int i = 0; i < missions.Length; i += 2)
                 {
-                    string codeName = missions[i];
-                    string state = missions[i + 1];
+                    try
+                    {
+                        string codeName = missions[i];
+                        string state = missions[i + 1];
 
-                    commando.AddMission(codeName, state);
+                        commando.AddMission(codeName, state);
+                    }
+                    catch (Exception ex)
+                    {
+                    }
                 }
             }
 

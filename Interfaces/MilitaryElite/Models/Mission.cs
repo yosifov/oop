@@ -28,7 +28,7 @@
             get => this.state;
             set
             {
-                if (value.ToLower() != "inprogress" && value.ToLower() != "finished")
+                if (value != "inProgress" && value != "Finished")
                 {
                     throw new ArgumentException("Invalid mission state");
                 }
