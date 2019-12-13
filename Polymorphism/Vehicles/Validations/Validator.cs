@@ -1,8 +1,6 @@
 ﻿namespace OOP.Polymorphism.Vehicles.Validations
 {
     using System;
-    using System.Collections.Generic;
-    using System.Text;
 
     public static class Validator
     {
@@ -10,7 +8,7 @@
         {
             if (number < 0)
             {
-                throw new ArgumentException($"{type} cannot be negative");
+                throw new ArgumentException($"{type} must be a positive number");
             }
         }
     }

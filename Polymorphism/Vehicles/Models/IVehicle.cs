@@ -8,7 +8,7 @@
 
         double DistanceDriven { get; }
 
-        bool IsSummer { get; }
+        bool IsConditionerOn { get; }
 
         bool IsTankLeaky { get; }
 

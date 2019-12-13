@@ -1,36 +1,46 @@
 ﻿namespace OOP.Polymorphism.Vehicles.Models
 {
     using OOP.Polymorphism.Vehicles.Validations;
+    using System;
 
     public abstract class Vehicle : IVehicle
     {
         private double fuelQuantity;
         private double fuelConsumptionPerKm;
         private double distanceDriven;
+        private double tankCapacity;
 
-        public Vehicle(double fuelQuantity, double fuelConsumptionPerKm, bool isSummer, bool isTankLeaky)
+        public Vehicle(double tankCapacity, double fuelQuantity, double fuelConsumptionPerKm, bool isConditionerOn, bool isTankLeaky)
         {
+            this.TankCapacity = tankCapacity;
             this.FuelQuantity = fuelQuantity;
             this.FuelConsumptionPerKm = fuelConsumptionPerKm;
             this.DistanceDriven = 0;
-            this.IsSummer = isSummer;
+            this.IsConditionerOn = isConditionerOn;
             this.IsTankLeaky = isTankLeaky;
         }
 
         public double FuelQuantity
         {
             get => this.fuelQuantity;
-            private set
+            protected set
             {
                 Validator.ValidateNegative(value, nameof(this.FuelQuantity));
-                this.fuelQuantity = value;
+                if (value > this.TankCapacity)
+                {
+                    this.fuelQuantity = 0;
+                }
+                else
+                {
+                    this.fuelQuantity = value;
+                }
             }
         }
 
         public double FuelConsumptionPerKm
         {
             get => this.fuelConsumptionPerKm;
-            private set
+            protected set
             {
                 Validator.ValidateNegative(value, nameof(this.FuelConsumptionPerKm));
                 this.fuelConsumptionPerKm = value;
@@ -40,14 +50,24 @@
         public double DistanceDriven
         {
             get => this.distanceDriven;
-            private set
+            protected set
             {
                 Validator.ValidateNegative(value, nameof(this.DistanceDriven));
                 this.distanceDriven = value;
             }
         }
 
-        public bool IsSummer { get; protected set; }
+        public double TankCapacity
+        {
+            get => this.tankCapacity;
+            protected set
+            {
+                Validator.ValidateNegative(value, nameof(this.TankCapacity));
+                this.tankCapacity = value;
+            }
+        }
+
+        public bool IsConditionerOn { get; protected set; }
 
         public bool IsTankLeaky { get; protected set; }
 
@@ -55,14 +75,16 @@
 
         public abstract double RefuelCapacityPercentageIfLeaky { get; }
 
-        public string Drive(double distance)
+        public virtual string Drive(double distance)
         {
-            double distanceCanDrive = this.FuelQuantity / (this.FuelConsumptionPerKm + (this.IsSummer ? this.SummerFuelConsumptionIncreasePerKm : 0));
+            double distanceCanDrive = this.FuelQuantity /
+                (this.FuelConsumptionPerKm + (this.IsConditionerOn ? this.SummerFuelConsumptionIncreasePerKm : 0));
 
             if (distanceCanDrive >= distance)
             {
                 this.DistanceDriven += distance;
-                this.FuelQuantity -= distance * (this.FuelConsumptionPerKm + (this.IsSummer ? this.SummerFuelConsumptionIncreasePerKm : 0));
+                this.FuelQuantity -= distance *
+                    (this.FuelConsumptionPerKm + (this.IsConditionerOn ? this.SummerFuelConsumptionIncreasePerKm : 0));
                 return $"{this.GetType().Name} travelled {distance} km";
             }
             else
@@ -73,7 +95,22 @@
 
         public void Refuel(double fuel)
         {
-            this.FuelQuantity += fuel * (this.IsTankLeaky ? this.RefuelCapacityPercentageIfLeaky * 0.01 : 1);
+            if (fuel <= 0)
+            {
+                Console.WriteLine("Fuel must be a positive number");
+            }
+            else
+            {
+                double fuelAmount = fuel * (this.IsTankLeaky ? this.RefuelCapacityPercentageIfLeaky * 0.01 : 1);
+                if (this.FuelQuantity + fuelAmount > this.TankCapacity)
+                {
+                    Console.WriteLine($"Cannot fit {fuel} fuel in the tank");
+                }
+                else
+                {
+                    this.FuelQuantity += fuelAmount;
+                }
+            }
         }
 
         public override string ToString()

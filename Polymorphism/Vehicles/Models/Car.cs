@@ -2,8 +2,8 @@
 {
     public class Car : Vehicle
     {
-        public Car(double fuelQuantity, double fuelConsumptionPerKm, bool isSummer, bool isTankLeaky) 
-            : base(fuelQuantity, fuelConsumptionPerKm, isSummer, isTankLeaky)
+        public Car(double tankCapacity, double fuelQuantity, double fuelConsumptionPerKm, bool isConditionerOn, bool isTankLeaky) 
+            : base(tankCapacity, fuelQuantity, fuelConsumptionPerKm, isConditionerOn, isTankLeaky)
         {
         }
 
