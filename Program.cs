@@ -2,7 +2,7 @@
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
             // Abstraction.RhombusOfStars.Rhombus.Execute();
             // Encapsulation.StartUp.ExecuteSortPersonsByNameAndAge();
@@ -28,7 +28,8 @@
             // Interfaces.Telephony.Startup.Execute();
             // Interfaces.BorderControl.Startup.Execute();
             // Interfaces.BorderControl.Startup.ExecuteFoodShortage();
-            Interfaces.MilitaryElite.Startup.Execute();
+            // Interfaces.MilitaryElite.Startup.Execute();
+            Polymorphism.Vehicles.Startup.Execute();
         }
     }
 }

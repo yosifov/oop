@@ -36,7 +36,7 @@
                 foreach (var privateId in privatesIds)
                 {
                     lieutenantGeneral.AddPrivate(this.soldiers
-                        .Select(x => x as Private)
+                        .OfType<Private>()
                         .ToList()
                         .FirstOrDefault(x => x.Id == privateId));
                 }
@@ -80,6 +80,7 @@
                     }
                     catch (Exception ex)
                     {
+                        Console.WriteLine(ex.Message);
                     }
                 }
             }
