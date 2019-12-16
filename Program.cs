@@ -29,7 +29,8 @@
             // Interfaces.BorderControl.Startup.Execute();
             // Interfaces.BorderControl.Startup.ExecuteFoodShortage();
             // Interfaces.MilitaryElite.Startup.Execute();
-            Polymorphism.Vehicles.Startup.Execute();
+            // Polymorphism.Vehicles.Startup.Execute();
+            Polymorphism.WildFarm.Startup.Execute();
         }
     }
 }
