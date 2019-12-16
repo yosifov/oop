@@ -4,8 +4,8 @@
     using System.Collections.Generic;
     using OOP.Polymorphism.WildFarm.Models.Animals;
     using OOP.Polymorphism.WildFarm.Models.Animals.Birds;
-    using OOP.Polymorphism.WildFarm.Models.Animals.Mammals.Felines;
     using OOP.Polymorphism.WildFarm.Models.Animals.Mammals;
+    using OOP.Polymorphism.WildFarm.Models.Animals.Mammals.Felines;
     using OOP.Polymorphism.WildFarm.Models.Foods;
 
     public class Startup

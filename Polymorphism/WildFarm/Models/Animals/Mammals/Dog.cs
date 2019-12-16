@@ -1,8 +1,8 @@
 ﻿namespace OOP.Polymorphism.WildFarm.Models.Animals.Mammals
 {
-    using OOP.Polymorphism.WildFarm.Models.Foods;
     using System;
     using System.Collections.Generic;
+    using OOP.Polymorphism.WildFarm.Models.Foods;
 
     public class Dog : Mammal
     {
