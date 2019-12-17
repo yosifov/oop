@@ -6,10 +6,10 @@
 
     public class Mouse : Mammal
     {
-        private List<string> foodThatEat = new List<string>()
+        private readonly List<string> foodThatEat = new List<string>()
         {
-            "Vegetable",
-            "Fruit"
+            nameof(Vegetable),
+            nameof(Fruit)
         };
 
         public Mouse(string name, double weight, string livingRegion)
@@ -17,7 +17,7 @@
         {
         }
 
-        public override double WeightIndex => 0.10;
+        protected override double WeightIndex => 0.10;
 
         public override string ProduceSound()
         {

@@ -1,11 +1,10 @@
 ﻿namespace OOP.Polymorphism.WildFarm.Models.Animals
 {
-    using System.Collections.Generic;
     using OOP.Polymorphism.WildFarm.Models.Foods;
 
     public abstract class Animal
     {
-        public Animal(string name, double weight)
+        protected Animal(string name, double weight)
         {
             this.Name = name;
             this.Weight = weight;
@@ -18,7 +17,7 @@
 
         public int FoodEaten { get; protected set; }
 
-        public abstract double WeightIndex { get; }
+        protected abstract double WeightIndex { get; }
 
         public abstract string ProduceSound();
 

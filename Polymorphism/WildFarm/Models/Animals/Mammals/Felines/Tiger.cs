@@ -8,7 +8,7 @@
     {
         private List<string> foodThatEat = new List<string>()
         {
-            "Meat"
+            nameof(Meat)
         };
 
         public Tiger(string name, double weight, string livingRegion, string breed)
@@ -16,7 +16,7 @@
         {
         }
 
-        public override double WeightIndex => 1.00;
+        protected override double WeightIndex => 1.00;
 
         public override string ProduceSound()
         {

@@ -2,7 +2,7 @@
 {
     public abstract class Food
     {
-        public Food(int quantity)
+        protected Food(int quantity)
         {
             this.Quantity = quantity;
         }

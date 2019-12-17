@@ -6,10 +6,10 @@
 
     public class Cat : Feline
     {
-        private List<string> foodThatEat = new List<string>()
+        private readonly List<string> foodThatEat = new List<string>()
         {
-            "Vegetable",
-            "Meat"
+            nameof(Vegetable),
+            nameof(Meat)
         };
 
         public Cat(string name, double weight, string livingRegion, string breed)
@@ -17,7 +17,7 @@
         {
         }
 
-        public override double WeightIndex => 0.30;
+        protected override double WeightIndex => 0.30;
 
         public override string ProduceSound()
         {

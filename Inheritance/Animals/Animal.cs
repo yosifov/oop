@@ -10,7 +10,7 @@
         private string name;
         private int age;
         private string gender;
-        private List<string> genders = new List<string>()
+        private readonly List<string> genders = new List<string>()
         {
             "male",
             "female"

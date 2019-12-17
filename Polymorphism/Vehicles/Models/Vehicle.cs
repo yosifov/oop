@@ -1,7 +1,7 @@
 ﻿namespace OOP.Polymorphism.Vehicles.Models
 {
-    using OOP.Polymorphism.Vehicles.Validations;
     using System;
+    using OOP.Polymorphism.Vehicles.Validations;
 
     public abstract class Vehicle : IVehicle
     {
