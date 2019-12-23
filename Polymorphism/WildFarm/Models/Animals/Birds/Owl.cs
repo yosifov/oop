@@ -6,9 +6,9 @@
 
     public class Owl : Bird
     {
-        private List<string> foodThatEat = new List<string>()
+        private readonly List<string> foodThatEat = new List<string>()
         {
-            "Meat"
+            nameof(Meat)
         };
 
         public Owl(string name, double weight, double wingSize)
@@ -16,7 +16,7 @@
         {
         }
 
-        public override double WeightIndex => 0.25;
+        protected override double WeightIndex => 0.25;
 
         public override string ProduceSound()
         {

@@ -25,7 +25,8 @@
                     case "Private":
                         decimal privateSalary = decimal.Parse(soldierArgs[4]);
 
-                        militaryElite.AddPrivate(soldierId,
+                        militaryElite.AddPrivate(
+                            soldierId,
                             soldierFirstName,
                             soldierLastName,
                             privateSalary);
@@ -33,7 +34,8 @@
                     case "Spy":
                         int spyCodeNumber = int.Parse(soldierArgs[4]);
 
-                        militaryElite.AddSpy(soldierId,
+                        militaryElite.AddSpy(
+                            soldierId,
                             soldierFirstName,
                             soldierLastName,
                             spyCodeNumber);
@@ -42,7 +44,8 @@
                         decimal lieutenantSalary = decimal.Parse(soldierArgs[4]);
                         int[] privates = soldierArgs.Skip(5).Select(int.Parse).ToArray();
 
-                        militaryElite.AddLieutenantGeneral(soldierId,
+                        militaryElite.AddLieutenantGeneral(
+                            soldierId,
                             soldierFirstName,
                             soldierLastName,
                             lieutenantSalary,
@@ -55,7 +58,8 @@
 
                         try
                         {
-                            militaryElite.AddEnginees(soldierId,
+                            militaryElite.AddEnginees(
+                                soldierId,
                                 soldierFirstName,
                                 soldierLastName,
                                 engineerSalary,
@@ -66,6 +70,7 @@
                         {
                             Console.WriteLine(ex.Message);
                         }
+
                         break;
                     case "Commando":
                         decimal commandoSalary = decimal.Parse(soldierArgs[4]);
@@ -74,7 +79,8 @@
 
                         try
                         {
-                            militaryElite.AddCommando(soldierId,
+                            militaryElite.AddCommando(
+                                soldierId,
                                 soldierFirstName,
                                 soldierLastName,
                                 commandoSalary,
@@ -85,6 +91,7 @@
                         {
                             Console.WriteLine(ex.Message);
                         }
+
                         break;
                     default:
                         break;

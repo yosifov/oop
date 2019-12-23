@@ -7,9 +7,9 @@
     {
         public static void Execute()
         {
-            Car car = null;
-            Truck truck = null;
-            Bus bus = null;
+            Car car;
+            Truck truck;
+            Bus bus;
             double fuelQuantity;
             double fuelConsumptionPerKm;
             double tankCapacity;
@@ -30,7 +30,6 @@
                 {
                     try
                     {
-
                         fuelQuantity = double.Parse(carInfo[1]);
                         fuelConsumptionPerKm = double.Parse(carInfo[2]);
                         tankCapacity = double.Parse(carInfo[3]);
@@ -107,7 +106,7 @@
                     }
                 }
             }
-            
+
             try
             {
                 int actions = int.Parse(Console.ReadLine());
@@ -164,6 +163,7 @@
                                 {
                                     Console.WriteLine(bus.DriveEmpty(commandValue));
                                 }
+
                                 break;
                             default:
                                 Console.WriteLine("Wrong action");

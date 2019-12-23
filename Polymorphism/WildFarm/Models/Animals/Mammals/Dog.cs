@@ -6,9 +6,9 @@
 
     public class Dog : Mammal
     {
-        private List<string> foodThatEat = new List<string>()
+        private readonly List<string> foodThatEat = new List<string>()
         {
-            "Meat"
+            nameof(Meat)
         };
 
         public Dog(string name, double weight, string livingRegion)
@@ -16,7 +16,7 @@
         {
         }
 
-        public override double WeightIndex => 0.40;
+        protected override double WeightIndex => 0.40;
 
         public override string ProduceSound()
         {
