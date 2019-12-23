@@ -1,5 +1,7 @@
 ﻿namespace OOP
 {
+    using OOP.SOLID.Logger;
+
     public class Program
     {
         public static void Main()
@@ -30,7 +32,9 @@
             // Interfaces.BorderControl.Startup.ExecuteFoodShortage();
             // Interfaces.MilitaryElite.Startup.Execute();
             // Polymorphism.Vehicles.Startup.Execute();
-            Polymorphism.WildFarm.Startup.Execute();
+            // Polymorphism.WildFarm.Startup.Execute();
+            var logger = new Startup();
+            logger.Execute();
         }
     }
 }
