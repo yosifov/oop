@@ -34,7 +34,8 @@
             // var logger = new Startup();
             // logger.Execute();
             // Reflection.HarvestingFields.Startup.Execute();
-            Reflection.BlackBoxInteger.Startup.Execute();
+            // Reflection.BlackBoxInteger.Startup.Execute();
+            Reflection.BarracksWars.AppEntryPoint.Execute();
         }
     }
 }

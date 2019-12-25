@@ -12,4 +12,8 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Reflection\BarracksWars\Core\Commands\" />
+  </ItemGroup>
+
 </Project>
