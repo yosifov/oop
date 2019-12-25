@@ -1,7 +1,5 @@
 ﻿namespace OOP
 {
-    using OOP.SOLID.Logger;
-
     public class Program
     {
         public static void Main()
@@ -35,7 +33,8 @@
             // Polymorphism.WildFarm.Startup.Execute();
             // var logger = new Startup();
             // logger.Execute();
-            Reflection.HarvestingFields.Startup.Execute();
+            // Reflection.HarvestingFields.Startup.Execute();
+            Reflection.BlackBoxInteger.Startup.Execute();
         }
     }
 }
