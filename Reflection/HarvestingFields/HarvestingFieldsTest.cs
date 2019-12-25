@@ -8,7 +8,8 @@
     public class HarvestingFieldsTest
     {
         private Type classType;
-        private FieldInfo[] harvestingFields;
+        private FieldInfo[] allHarvestingFields;
+        private FieldInfo[] currentFields;
 
         public HarvestingFieldsTest()
         {
@@ -16,6 +17,9 @@
                 .Assembly
                 .GetTypes()
                 .FirstOrDefault(t => t.Name == "HarvestingFields");
+
+            this.allHarvestingFields = this.classType
+                .GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
         }
 
         public void Run(string command)
@@ -35,7 +39,7 @@
                     this.GetAllFields();
                     break;
                 default:
-                    break;
+                    throw new ArgumentException("Invalid command!");
             }
 
             Console.WriteLine(this.PrintFields());
@@ -43,39 +47,37 @@
 
         private void GetPrivateFields()
         {
-            this.harvestingFields = this.classType
-                .GetFields(BindingFlags.NonPublic | BindingFlags.Instance)
-                .Where(f => f.GetCustomAttributes(false).Length == 0 && f.Attributes.ToString().Contains("Private"))
+            this.currentFields = this.allHarvestingFields
+                .Where(f => f.IsPrivate)
                 .ToArray();
         }
 
         private void GetProtectedFields()
         {
-            this.harvestingFields = this.classType
-                .GetFields(BindingFlags.NonPublic | BindingFlags.Instance)
-                .Where(f => f.Attributes.ToString().Contains("Family"))
+            this.currentFields = this.allHarvestingFields
+                .Where(f => f.IsFamily)
                 .ToArray();
         }
 
         private void GetPublicFields()
         {
-            this.harvestingFields = this.classType
-                .GetFields(BindingFlags.Public | BindingFlags.Instance);
+            this.currentFields = this.allHarvestingFields
+                .Where(f => f.IsPublic)
+                .ToArray();
         }
 
         private void GetAllFields()
         {
-            this.harvestingFields = this.classType
-                .GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            this.currentFields = this.allHarvestingFields;
         }
 
         private string PrintFields()
         {
             var sb = new StringBuilder();
 
-            foreach (var field in this.harvestingFields)
+            foreach (var field in this.currentFields)
             {
-                if (field.Attributes.ToString().Contains("Family"))
+                if (field.IsFamily)
                 {
                     sb.AppendLine("protected " + field.FieldType.Name + " " + field.Name);
                 }
