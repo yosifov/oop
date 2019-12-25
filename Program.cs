@@ -33,8 +33,9 @@
             // Interfaces.MilitaryElite.Startup.Execute();
             // Polymorphism.Vehicles.Startup.Execute();
             // Polymorphism.WildFarm.Startup.Execute();
-            var logger = new Startup();
-            logger.Execute();
+            // var logger = new Startup();
+            // logger.Execute();
+            Reflection.HarvestingFields.Startup.Execute();
         }
     }
 }
