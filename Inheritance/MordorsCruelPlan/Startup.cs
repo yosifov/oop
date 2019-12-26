@@ -2,13 +2,14 @@
 {
     using System;
 
-    public class Startup
+    public class Startup : IService
     {
-        public static void Execute()
+        public void Execute()
         {
             var wizard = new Wizard("Gandalf the Gray");
 
-            var foodList = Console.ReadLine().Split();
+            var foodList = Console.ReadLine()
+                .Split();
 
             foreach (var food in foodList)
             {

@@ -1,4 +1,4 @@
-﻿namespace OOP.Encapsulation
+﻿namespace OOP.Encapsulation.PersonTask
 {
     using System;
 

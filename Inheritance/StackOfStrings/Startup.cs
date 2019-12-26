@@ -3,9 +3,9 @@
     using System;
     using System.Collections.Generic;
     
-    public class Startup
+    public class Startup : IService
     {
-        public static void Execute()
+        public void Execute()
         {
             var stackOfStrings = new StackOfStrings();
             

@@ -5,9 +5,9 @@
     using Core.Factories;
     using Data;
 
-    public class AppEntryPoint
+    public class Startup : IService
     {
-        public static void Execute()
+        public void Execute()
         {
             IRepository repository = new UnitRepository();
             IUnitFactory unitFactory = new UnitFactory();

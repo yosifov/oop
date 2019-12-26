@@ -1,12 +1,19 @@
-﻿namespace OOP.Encapsulation
+﻿namespace OOP.Encapsulation.PersonTask
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
 
-    public class StartUp
+    public class Startup : IService
     {
-        public static void ExecuteSortPersonsByNameAndAge()
+        public void Execute()
+        {
+            ExecuteSortPersonsByNameAndAge();
+            ExecuteSalaryIncrease();
+            ExecuteFirstAndReserveTeam();
+        }
+
+        private static void ExecuteSortPersonsByNameAndAge()
         {
             var lines = int.Parse(Console.ReadLine());
             var persons = new List<Person>();
@@ -24,7 +31,7 @@
                    .ForEach(p => Console.WriteLine(p.ToString()));
         }
 
-        public static void ExecuteSalaryIncrease()
+        private static void ExecuteSalaryIncrease()
         {
             var lines = int.Parse(Console.ReadLine());
             var persons = new List<Person>();
@@ -46,7 +53,7 @@
             persons.ForEach(p => Console.WriteLine(p.ToString()));
         }
 
-        public static void ExecuteFirstAndReserveTeam()
+        private static void ExecuteFirstAndReserveTeam()
         {
             var team = new Team("My Team");
 

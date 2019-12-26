@@ -2,9 +2,9 @@
 {
     using System;
 
-    public class Startup
+    public class Startup : IService
     {
-        public static void Execute()
+        public void Execute()
         {
             double length = double.Parse(Console.ReadLine());
             double width = double.Parse(Console.ReadLine());

@@ -2,9 +2,9 @@
 {
     using System;
 
-    public class Startup
+    public class Startup : IService
     {
-        public static void Execute()
+        public void Execute()
         {
             string name = Console.ReadLine();
             int age = int.Parse(Console.ReadLine());

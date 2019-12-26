@@ -4,9 +4,9 @@
     using System.Linq;
     using OOP.Inheritance.OnlineRadioDatabase.Exceptions;
 
-    public class Startup
+    public class Startup : IService
     {
-        public static void Execute()
+        public void Execute()
         {
             var playlist = new Playlist();
 

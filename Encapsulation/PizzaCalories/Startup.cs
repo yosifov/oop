@@ -2,9 +2,9 @@
 {
     using System;
 
-    public class Startup
+    public class Startup : IService
     {
-        public static void Execute()
+        public void Execute()
         {
             var pizzaParameters = Console.ReadLine().Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
             string pizzaName = pizzaParameters[1];

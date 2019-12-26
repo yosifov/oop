@@ -5,9 +5,9 @@
     using OOP.Polymorphism.WildFarm.Models.Animals;
     using OOP.Polymorphism.WildFarm.Models.Foods;
 
-    public class Startup
+    public class Startup : IService
     {
-        public static void Execute()
+        public void Execute()
         {
             List<Animal> animals = new List<Animal>();
 

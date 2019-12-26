@@ -2,9 +2,9 @@
 {
     using System;
 
-    public class Startup
+    public class Startup : IService
     {
-        public static void Execute()
+        public void Execute()
         {
             var radius = int.Parse(Console.ReadLine());
             IDrawable circle = new Circle(radius);

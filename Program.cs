@@ -1,41 +1,112 @@
 ﻿namespace OOP
 {
+    using OOP.Enums;
+    using System;
+    using System.Linq;
+    using System.Reflection;
+
     public class Program
     {
         public static void Main()
         {
-            // Abstraction.RhombusOfStars.Rhombus.Execute();
-            // Encapsulation.StartUp.ExecuteSortPersonsByNameAndAge();
-            // Encapsulation.StartUp.ExecuteSalaryIncrease();
-            // Encapsulation.StartUp.ExecuteFirstAndReserveTeam();
-            // Encapsulation.ClassBox.Startup.Execute();
-            // Encapsulation.AnimalFarm.Startup.Execute();
-            // Encapsulation.ShoppingSpree.Startup.Execute();
-            // Encapsulation.PizzaCalories.Startup.Execute();
-            // Inheritance.Lab.Startup.Execute();
-            // Inheritance.RandomList.Startup.Execute();
-            // Inheritance.StackOfStrings.Startup.Execute();
-            // Inheritance.Person.Startup.Execute();
-            // Inheritance.BookShop.Startup.Execute();
-            // Inheritance.Mankind.Startup.Execute();
-            // Inheritance.OnlineRadioDatabase.Startup.Execute();
-            // Inheritance.MordorsCruelPlan.Startup.Execute();
-            // Inheritance.Animals.Startup.Execute();
-            // Interfaces.Shapes.Startup.Execute();
-            // Interfaces.Cars.Startup.Execute();
-            // Interfaces.IPerson.Startup.Execute();
-            // Interfaces.Ferrari.Startup.Execute();
-            // Interfaces.Telephony.Startup.Execute();
-            // Interfaces.BorderControl.Startup.Execute();
-            // Interfaces.BorderControl.Startup.ExecuteFoodShortage();
-            // Interfaces.MilitaryElite.Startup.Execute();
-            // Polymorphism.Vehicles.Startup.Execute();
-            // Polymorphism.WildFarm.Startup.Execute();
-            // var logger = new Startup();
-            // logger.Execute();
-            // Reflection.HarvestingFields.Startup.Execute();
-            // Reflection.BlackBoxInteger.Startup.Execute();
-            Reflection.BarracksWars.AppEntryPoint.Execute();
+            string course = "OOP";
+            string topic = GetTopic();
+            string task = GetTask(topic);
+
+            var nameSpace = $"{course}.{topic}.{task}";
+
+            IService startUp = GetStartService(nameSpace);
+            startUp.Execute();
+        }
+
+        private static IService GetStartService(string nameSpace)
+        {
+            var type = Assembly
+                .GetExecutingAssembly()
+                .GetTypes()
+                .FirstOrDefault(t => t.Namespace == nameSpace && t.Name == "Startup");
+
+            return Activator.CreateInstance(type) as IService;
+        }
+
+        private static string GetTopic()
+        {
+            Console.WriteLine("Please select topic. Available options:");
+
+            foreach (Topics topic in (Topics[])Enum.GetValues(typeof(Topics)))
+            {
+                Console.WriteLine($"({(int)topic}) {topic.ToString()}");
+            }
+
+            int userSelection;
+            Enum result;
+
+            while (true)
+            {
+                Console.Write("Enter your choice: ");
+
+                try
+                {
+                    userSelection = int.Parse(Console.ReadLine());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    continue;
+                }
+
+                if (Enum.IsDefined(typeof(Topics), userSelection))
+                {
+                    result = (Topics)userSelection;
+                }
+                else
+                {
+                    continue;
+                }
+                break;
+            }
+
+            return result.ToString();
+        }
+
+        private static string GetTask(string topic)
+        {
+            Type taskEnum = Assembly.GetExecutingAssembly().GetTypes().FirstOrDefault(x => x.Name == $"{topic}Tasks");
+
+            Console.WriteLine("Please select task. Available options:");
+
+            foreach (var task in Enum.GetValues(taskEnum))
+            {
+                Console.WriteLine($"({(int)task}) {task}");
+            }
+
+            int userSelection;
+
+            while (true)
+            {
+                Console.Write("Enter your choice: ");
+
+                try
+                {
+                    userSelection = int.Parse(Console.ReadLine());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    continue;
+                }
+
+                if ((taskEnum.GetEnumValues() as int[]).Contains(userSelection))
+                {
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+
+            return taskEnum.GetEnumName(userSelection);
         }
     }
 }

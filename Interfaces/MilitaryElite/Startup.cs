@@ -3,9 +3,9 @@
     using System;
     using System.Linq;
 
-    public class Startup
+    public class Startup : IService
     {
-        public static void Execute()
+        public void Execute()
         {
             var militaryElite = new MilitaryElite();
 

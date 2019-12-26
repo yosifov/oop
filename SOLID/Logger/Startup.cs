@@ -3,7 +3,7 @@
     using System;
     using OOP.SOLID.Logger.Core;
 
-    public class Startup
+    public class Startup : IService
     {
         private ICommandInterpreter commandInterpreter;
 

@@ -3,9 +3,9 @@
     using System;
     using OOP.Polymorphism.Vehicles.Models;
 
-    public class Startup
+    public class Startup : IService
     {
-        public static void Execute()
+        public void Execute()
         {
             Car car;
             Truck truck;
