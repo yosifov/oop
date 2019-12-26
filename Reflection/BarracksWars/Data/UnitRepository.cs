@@ -41,10 +41,17 @@
             this.amountOfUnits[unitType]++;
         }
 
-        public void RemoveUnit(string unitType)
+        public string RemoveUnit(string unitType)
         {
-            // TODO: implement for Problem 4
-            throw new NotImplementedException();
+            if (!this.amountOfUnits.ContainsKey(unitType) || this.amountOfUnits[unitType] <= 0)
+            {
+                return "No such units in repository.";
+            }
+            else
+            {
+                this.amountOfUnits[unitType]--;
+                return $"{unitType} retired!";
+            }
         }
     }
 }

@@ -6,6 +6,6 @@
 
         void AddUnit(IUnit unit);
 
-        void RemoveUnit(string unitType);
+        string RemoveUnit(string unitType);
     }
 }
