@@ -1,9 +1,9 @@
 ﻿namespace OOP
 {
-    using OOP.Enums;
     using System;
     using System.Linq;
     using System.Reflection;
+    using OOP.Enums;
 
     public class Program
     {
