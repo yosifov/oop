@@ -5,7 +5,7 @@
     using OOP.Reflection.InfernoInfinity.Contracts;
     using OOP.Reflection.InfernoInfinity.Enums;
     using OOP.Reflection.InfernoInfinity.Models.Gems;
-    using OOP.Reflection.InfernoInfinity.Validations;
+    using OOP.Reflection.InfernoInfinity.Utilities;
 
     public abstract class Weapon : IWeapon, IGem
     {

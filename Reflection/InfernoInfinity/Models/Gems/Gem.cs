@@ -2,7 +2,7 @@
 {
     using OOP.Reflection.InfernoInfinity.Contracts;
     using OOP.Reflection.InfernoInfinity.Enums;
-    using OOP.Reflection.InfernoInfinity.Validations;
+    using OOP.Reflection.InfernoInfinity.Utilities;
 
     public abstract class Gem : IGem
     {

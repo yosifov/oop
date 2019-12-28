@@ -1,15 +1,16 @@
 ﻿namespace OOP.Reflection.InfernoInfinity.Core
 {
     using System;
+    using Microsoft.Extensions.DependencyInjection;
     using OOP.Reflection.InfernoInfinity.Contracts;
 
     public class Engine
     {
-        private ICommandInterpreter commandInterpreter;
+        private IServiceProvider serviceProvider;
 
-        public Engine(ICommandInterpreter commandInterpreter)
+        public Engine(IServiceProvider serviceProvider)
         {
-            this.commandInterpreter = commandInterpreter;
+            this.serviceProvider = serviceProvider;
         }
 
         public void Run()
@@ -26,21 +27,25 @@
                         throw new ArgumentException("Invalid user input");
                     }
 
-                    string commandName = userInput[0];
+                    var commandInterpreter = this.serviceProvider.GetService<ICommandInterpreter>();
 
-                    string result = this.commandInterpreter.InterpretCommand(userInput, commandName).Execute();
+                    string result = commandInterpreter.Read(userInput);
 
                     Console.WriteLine(result);
 
-                    if (commandName.ToLower() == "end")
+                    if (userInput[0].ToLower() == "end")
                     {
                         break;
                     }
                 }
             }
-            catch (Exception ex)
+            catch (ArgumentException ax)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ax.Message);
+            }
+            catch (InvalidOperationException iox)
+            {
+                Console.WriteLine(iox.Message);
             }
         }
     }

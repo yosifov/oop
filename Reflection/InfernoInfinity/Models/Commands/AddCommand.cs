@@ -4,30 +4,34 @@
     using OOP.Reflection.InfernoInfinity.Contracts;
     using OOP.Reflection.InfernoInfinity.Enums;
 
-    public class AddCommand : Command
+    public class AddCommand : IExecutable
     {
-        public AddCommand(string[] data, IWeaponFactory weaponFactory, IGemFactory gemFactory, IWeaponRepository weapons)
-            : base(data, weaponFactory, gemFactory, weapons)
+        private readonly IGemFactory gemFactory;
+        private readonly IWeaponRepository weapons;
+
+        public AddCommand(IGemFactory gemFactory, IWeaponRepository weapons)
         {
+            this.gemFactory = gemFactory;
+            this.weapons = weapons;
         }
 
-        public override string Execute()
+        public string Execute(string[] data)
         {
-            if (this.Data.Length != 4)
+            if (data.Length != 3)
             {
                 return "Invalid command arguments";
             }
 
             try
             {
-                var weaponName = this.Data[1];
-                int gemIndex = int.Parse(this.Data[2]);
-                string[] gemArgs = this.Data[3].Split();
+                var weaponName = data[0];
+                int gemIndex = int.Parse(data[1]);
+                string[] gemArgs = data[2].Split();
                 Clarity gemClarityType = (Clarity)Enum.Parse(typeof(Clarity), gemArgs[0]);
                 string gemType = gemArgs[1];
-                var currentGem = this.GemFactory.CreateGem(gemType, gemClarityType);
+                var currentGem = this.gemFactory.CreateGem(gemType, gemClarityType);
 
-                this.Weapons.AddGemToWeapon(weaponName, gemIndex, currentGem);
+                this.weapons.AddGemToWeapon(weaponName, gemIndex, currentGem);
 
                 return $"{gemType} successfuly added to {weaponName}";
             }

@@ -3,36 +3,52 @@
     using System;
     using System.Linq;
     using System.Reflection;
+    using Microsoft.Extensions.DependencyInjection;
     using OOP.Reflection.InfernoInfinity.Contracts;
 
     public class CommandInterpreter : ICommandInterpreter
     {
-        private IWeaponFactory weaponFactory;
-        private IGemFactory gemFactory;
-        private IWeaponRepository weapons;
+        private const string Suffix = "command";
+        private readonly IServiceProvider serviceProvider;
 
-        public CommandInterpreter(IWeaponFactory weaponFactory, IGemFactory gemFactory, IWeaponRepository weapons)
+        public CommandInterpreter(IServiceProvider serviceProvider)
         {
-            this.weaponFactory = weaponFactory;
-            this.gemFactory = gemFactory;
-            this.weapons = weapons;
+            this.serviceProvider = serviceProvider;
         }
 
-        public IExecutable InterpretCommand(string[] data, string commandName)
+        public string Read(string[] data)
         {
+            string commandName = data[0].ToLower() + Suffix;
+            string[] inputArgs = data.Skip(1).ToArray();
+
             var command = Assembly
                 .GetExecutingAssembly()
                 .GetTypes()
-                .FirstOrDefault(x => x.Name.ToLower() == commandName.ToLower() + "command");
+                .FirstOrDefault(x => x.Name.ToLower() == commandName);
 
             if (command == null)
             {
-                throw new InvalidOperationException("Invalid command");
+                throw new ArgumentNullException("Invalid command");
             }
 
-            var instance = (IExecutable)Activator.CreateInstance(command, new object[] { data, this.weaponFactory, this.gemFactory, this.weapons });
+            var constructor = command
+                .GetConstructors()
+                .FirstOrDefault();
 
-            return instance;
+            var constructorParams = constructor
+                .GetParameters()
+                .Select(p => p.ParameterType)
+                .ToArray();
+
+            var services = constructorParams
+                .Select(this.serviceProvider.GetService)
+                .ToArray();
+
+            var instance = (IExecutable)Activator.CreateInstance(command, services);
+
+            string result = instance.Execute(inputArgs);
+
+            return result;
         }
     }
 }

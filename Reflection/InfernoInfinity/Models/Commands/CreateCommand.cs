@@ -4,24 +4,34 @@
     using OOP.Reflection.InfernoInfinity.Contracts;
     using OOP.Reflection.InfernoInfinity.Enums;
 
-    public class CreateCommand : Command
+    public class CreateCommand : IExecutable
     {
-        public CreateCommand(string[] data, IWeaponFactory weaponFactory, IGemFactory gemFactory, IWeaponRepository weapons)
-            : base(data, weaponFactory, gemFactory, weapons)
+        private readonly IWeaponFactory weaponFactory;
+        private readonly IWeaponRepository weapons;
+
+        public CreateCommand(IWeaponFactory weaponFactory, IWeaponRepository weapons)
         {
+            this.weaponFactory = weaponFactory;
+            this.weapons = weapons;
         }
 
-        public override string Execute()
+        public string Execute(string[] data)
         {
+            if (data.Length != 2)
+            {
+                return $"Invalid command arguments";
+            }
+
             try
             {
-                var weaponTypeArgs = this.Data[1].Split();
+                var weaponTypeArgs = data[0].Split();
                 Rarity weaponRarity = (Rarity)Enum.Parse(typeof(Rarity), weaponTypeArgs[0]);
                 string weaponType = weaponTypeArgs[1];
-                var weaponName = this.Data[2];
                 
-                var currentWeapon = this.WeaponFactory.CreateWeapon(weaponType, weaponName, weaponRarity);
-                this.Weapons.AddWeapon(currentWeapon);
+                var weaponName = data[1];
+                
+                var currentWeapon = this.weaponFactory.CreateWeapon(weaponType, weaponName, weaponRarity);
+                this.weapons.AddWeapon(currentWeapon);
 
                 return $"{weaponName} successfuly created!";
             }

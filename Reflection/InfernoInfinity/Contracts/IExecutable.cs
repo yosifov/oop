@@ -2,6 +2,6 @@
 {
     public interface IExecutable
     {
-        string Execute();
+        string Execute(string[] data);
     }
 }

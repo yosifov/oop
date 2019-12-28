@@ -2,16 +2,18 @@
 {
     using OOP.Reflection.InfernoInfinity.Contracts;
 
-    public class EndCommand : Command
+    public class EndCommand : IExecutable
     {
-        public EndCommand(string[] data, IWeaponFactory weaponFactory, IGemFactory gemFactory, IWeaponRepository weapons)
-            : base(data, weaponFactory, gemFactory, weapons)
+        private readonly IWeaponRepository weapons;
+
+        public EndCommand(IWeaponRepository weapons)
         {
+            this.weapons = weapons;
         }
 
-        public override string Execute()
+        public string Execute(string[] data)
         {
-            return this.Weapons.PrintAllWeapons();
+            return this.weapons.PrintAllWeapons();
         }
     }
 }

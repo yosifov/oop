@@ -2,23 +2,25 @@
 {
     using OOP.Reflection.InfernoInfinity.Contracts;
 
-    public class PrintCommand : Command
+    public class PrintCommand : IExecutable
     {
-        public PrintCommand(string[] data, IWeaponFactory weaponFactory, IGemFactory gemFactory, IWeaponRepository weapons)
-            : base(data, weaponFactory, gemFactory, weapons)
+        private readonly IWeaponRepository weapons;
+
+        public PrintCommand(IWeaponRepository weapons)
         {
+            this.weapons = weapons;
         }
 
-        public override string Execute()
+        public string Execute(string[] data)
         {
-            if (this.Data.Length != 2)
+            if (data.Length != 1)
             {
                 return "Invalid command arguments";
             }
 
-            string weaponName = this.Data[1];
+            string weaponName = data[0];
 
-            return this.Weapons.PrintWeapon(weaponName);
+            return this.weapons.PrintWeapon(weaponName);
         }
     }
 }

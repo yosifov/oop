@@ -3,26 +3,28 @@
     using System;
     using OOP.Reflection.InfernoInfinity.Contracts;
 
-    public class RemoveCommand : Command
+    public class RemoveCommand : IExecutable
     {
-        public RemoveCommand(string[] data, IWeaponFactory weaponFactory, IGemFactory gemFactory, IWeaponRepository weapons)
-            : base(data, weaponFactory, gemFactory, weapons)
+        private readonly IWeaponRepository weapons;
+
+        public RemoveCommand(IWeaponRepository weapons)
         {
+            this.weapons = weapons;
         }
 
-        public override string Execute()
+        public string Execute(string[] data)
         {
-            if (this.Data.Length != 3)
+            if (data.Length != 2)
             {
                 return "Invalid command arguments";
             }
 
             try
             {
-                string weaponName = this.Data[1];
-                int gemIndex = int.Parse(this.Data[2]);
+                string weaponName = data[0];
+                int gemIndex = int.Parse(data[1]);
 
-                this.Weapons.RemoveGemFromWeapon(weaponName, gemIndex);
+                this.weapons.RemoveGemFromWeapon(weaponName, gemIndex);
 
                 return $"Gem on position {gemIndex} successfuly removed";
             }
