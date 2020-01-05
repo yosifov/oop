@@ -98,5 +98,132 @@
             Assert.That(fetchElements.Length == 7);
             Assert.That(database.Elements[1] == fetchElements[1]);
         }
+
+        [Test]
+        public void AddPersonWithExistingUsernameShouldThrowAnException()
+        {
+            this.database = new Database();
+
+            this.database.AddPerson(new Person("yosifov", 1001));
+
+            Assert.Throws<InvalidOperationException>(() => this.database.AddPerson(new Person("yosifov", 1002)));
+        }
+
+        [Test]
+        public void AddPersonWithExistingIdShouldThrowAnException()
+        {
+            this.database = new Database();
+
+            this.database.AddPerson(new Person("yosifov", 1001));
+
+            Assert.Throws<InvalidOperationException>(() => this.database.AddPerson(new Person("kamen", 1001)));
+        }
+
+        [Test]
+        public void AddPersonWithValidData()
+        {
+            this.database = new Database();
+
+            this.database.AddPerson(new Person("yosifov", 1001));
+            this.database.AddPerson(new Person("kamen", 1002));
+
+            Assert.AreEqual(2, this.database.People.Count);
+        }
+
+        [Test]
+        public void RemovePersonThatExistShouldReturnTrue()
+        {
+            this.database = new Database();
+
+            var person = new Person("yosifov", 1001);
+
+            this.database.AddPerson(person);
+
+            Assert.That(this.database.RemovePerson(person));
+        }
+
+        [Test]
+        public void RemovePersonThatNotExistShouldReturnFalse()
+        {
+            this.database = new Database();
+
+            var person = new Person("yosifov", 1001);
+
+            Assert.That(this.database.RemovePerson(person) == false);
+        }
+
+        [Test]
+        [TestCase("kamen")]
+        [TestCase("Yosifov")]
+        public void FindByUsernameWithNonExistingUserShouldThrowAnException(string username)
+        {
+            this.database = new Database();
+
+            var person = new Person("yosifov", 1001);
+
+            this.database.AddPerson(person);
+
+            Assert.Throws<InvalidOperationException>(() => this.database.FindByUsername(username));
+        }
+
+        [Test]
+        public void FindByUsernameWithNullElementShouldThrowAnException()
+        {
+            this.database = new Database();
+
+            var person = new Person("yosifov", 1001);
+
+            this.database.AddPerson(person);
+
+            Assert.Throws<ArgumentNullException>(() => this.database.FindByUsername(null));
+        }
+
+        [Test]
+        public void FindByUsernameWithCorrectDataShouldReturnPersonElement()
+        {
+            this.database = new Database();
+
+            var person = new Person("yosifov", 1001);
+
+            this.database.AddPerson(person);
+
+            Assert.AreEqual(person, this.database.FindByUsername("yosifov"));
+        }
+
+        [Test]
+        public void FindByIdWithNonExistingIdShouldThrowAnException()
+        {
+            this.database = new Database();
+
+            var person = new Person("yosifov", 1001);
+
+            this.database.AddPerson(person);
+
+            Assert.Throws<InvalidOperationException>(() => this.database.FindById(1002));
+        }
+
+        [Test]
+        public void FindByIdWithNegativeIdShouldThrowAnException()
+        {
+            this.database = new Database();
+
+            var person = new Person("yosifov", 1001);
+
+            this.database.AddPerson(person);
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => this.database.FindById(-1001));
+        }
+
+        [Test]
+        public void FindByIdWithCorrectDataShouldReturnPersonElement()
+        {
+            this.database = new Database();
+
+            var person = new Person("yosifov", 1001);
+
+            this.database.AddPerson(person);
+
+            Assert.AreEqual(person, this.database.FindById(1001));
+        }
     }
 }
