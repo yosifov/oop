@@ -93,5 +93,72 @@
             Assert.AreEqual(initialCount - 1, this.dynamicListOfIntegers.Count);
             Assert.AreEqual(elementToRemove, removedElement);
         }
+
+        [Test]
+        public void RemoveMethodShouldReturnMinusOneWithForNonExistingElement()
+        {
+            this.dynamicListOfIntegers.Add(5);
+
+            int returnedIndex = this.dynamicListOfIntegers.Remove(1);
+
+            Assert.AreEqual(1, this.dynamicListOfIntegers.Count);
+            Assert.AreEqual(-1, returnedIndex);
+        }
+
+        [Test]
+        public void RemoveMethodShouldReturnCorrectIndexAndRemoveWithExistingElement()
+        {
+            this.dynamicListOfIntegers.Add(1);
+            this.dynamicListOfIntegers.Add(3);
+            this.dynamicListOfIntegers.Add(5);
+
+            int returnedIndex = this.dynamicListOfIntegers.Remove(3);
+
+            Assert.AreEqual(2, this.dynamicListOfIntegers.Count);
+            Assert.AreEqual(1, returnedIndex);
+        }
+
+        [Test]
+        public void IndexOfMethodShouldReturnMinusOneWithNonExistingElement()
+        {
+            this.dynamicListOfIntegers.Add(5);
+
+            int returnedIndex = this.dynamicListOfIntegers.IndexOf(1);
+
+            Assert.AreEqual(-1, returnedIndex);
+        }
+
+        [Test]
+        public void IndexOfMethodShouldReturnCorrectIndexWithExistingElement()
+        {
+            this.dynamicListOfIntegers.Add(1);
+            this.dynamicListOfIntegers.Add(3);
+            this.dynamicListOfIntegers.Add(5);
+
+            int returnedIndex = this.dynamicListOfIntegers.IndexOf(3);
+
+            Assert.AreEqual(3, this.dynamicListOfIntegers.Count);
+            Assert.AreEqual(1, returnedIndex);
+        }
+
+        [Test]
+        public void ContainsMethodShouldReturnFalseWithNonExistingElement()
+        {
+            this.dynamicListOfIntegers.Add(5);
+
+            bool result = this.dynamicListOfIntegers.Contains(4);
+
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+        public void ContainsMethodShouldReturnTrueWithExistingElement()
+        {
+            this.dynamicListOfIntegers.Add(5);
+
+            bool result = this.dynamicListOfIntegers.Contains(5);
+
+            Assert.IsTrue(result);
+        }
     }
 }
