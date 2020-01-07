@@ -166,7 +166,7 @@
             if (currentNode != null)
             {
                 // The element is found in the list -> remove it
-                RemoveListNode(currentNode, prevNode);
+                this.RemoveListNode(currentNode, prevNode);
                 return currentIndex;
             }
 
@@ -207,7 +207,7 @@
         /// </returns>
         public bool Contains(T item)
         {
-            int index = IndexOf(item);
+            int index = this.IndexOf(item);
             bool found = index != -1;
             return found;
         }
@@ -220,7 +220,7 @@
         private void RemoveListNode(ListNode node, ListNode prevNode)
         {
             this.count--;
-            if (count == 0)
+            if (this.count == 0)
             {
                 // The list becomes empty -> remove head and tail
                 this.head = null;
