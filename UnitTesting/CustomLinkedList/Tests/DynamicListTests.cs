@@ -61,6 +61,23 @@
         }
 
         [Test]
+        public void SetElementByInvalidIndexShouldThrowAnException()
+        {
+            this.dynamicListOfIntegers.Add(1);
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => this.dynamicListOfIntegers[1] = 5);
+        }
+
+        [Test]
+        public void SetElementWithCorrectIndexShouldWorkProperly()
+        {
+            this.dynamicListOfIntegers.Add(1);
+            this.dynamicListOfIntegers[0] = 2;
+
+            Assert.AreEqual(2, this.dynamicListOfIntegers[0]);
+        }
+
+        [Test]
         [TestCase(new int[] { 1, 3, 5, 7 }, -1)]
         [TestCase(new int[] { 1, 3, 5, 7 }, 4)]
         public void RemoveAtMethodShouldThrowAnExceptionWithInvalidData(int[] elementsToAdd, int index)
