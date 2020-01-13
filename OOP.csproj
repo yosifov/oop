@@ -20,4 +20,8 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UnitTesting\StorageMaster\Tests\BusinessLogic\" />
+  </ItemGroup>
+
 </Project>
