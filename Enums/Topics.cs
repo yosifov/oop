@@ -9,6 +9,7 @@
         Polymorphism = 5,
         SOLID = 6,
         Reflection = 7,
-        UnitTesting = 8
+        UnitTesting = 8,
+        Events = 9
     }
 }
