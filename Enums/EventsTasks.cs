@@ -2,6 +2,7 @@
 {
     public enum EventsTasks
     {
-        EventImplementation = 1
+        EventImplementation = 1,
+        KingsGambit = 2
     }
 }
